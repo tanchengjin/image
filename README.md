@@ -4,7 +4,7 @@ this is image process class
 $image=newImage();
 //可以使用链式操作来实现多个图片处理
 //flip_x
-$image->flip_x('./image.jpg')->image_save('new','./','cc_');
+$image->setPrefix('cc_')->flip_x('./image.jpg')->image_save('new','./','cc_');
 /**
      * 图片保存
      * @param $fileName String 文件名
