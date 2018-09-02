@@ -96,10 +96,12 @@ class Image
     /**
      * 设置保存文件时的前缀,如果为null则不使用前置
      * @param string $prefix
+     * @return $this;
      */
     public function setPrefix($prefix)
     {
         $this->prefix = $prefix;
+        return $this;
     }
 
     /**
@@ -184,14 +186,6 @@ class Image
         return $this;
     }
 
-    public function cut($imagePath=null,$x,$y,$width,$height){
-        if(!is_null($imagePath)){
-            $this->setImagePath($imagePath);
-        }
-        $this->img_new=imagecreatetruecolor($width,$height);
-        imagecopyresampled($this->img_new,$this->img_res,0,0,$x,$y,$width,$height,$width,$height);
-        return $this;
-    }
     /**
      * 以图片Y轴进行水平翻转
      * @param null $imagePath String 图片路径
@@ -212,6 +206,24 @@ class Image
         }
         return $this;
 
+    }
+
+    /**
+     * 图片裁剪
+     * @param null $imagePath 图片路径
+     * @param $x int 所要裁剪的图片x轴
+     * @param $y int 所要裁剪的图片y轴
+     * @param $width int 所要裁剪的图片宽度
+     * @param $height int 所要裁剪的图片高度
+     * @return $this
+     */
+    public function cut($imagePath=null,$x,$y,$width,$height){
+        if(!is_null($imagePath)){
+            $this->setImagePath($imagePath);
+        }
+        $this->img_new=imagecreatetruecolor($width,$height);
+        imagecopyresampled($this->img_new,$this->img_res,0,0,$x,$y,$width,$height,$width,$height);
+        return $this;
     }
 
     /**
