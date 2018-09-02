@@ -116,10 +116,12 @@ class Image
     /**
      * 设置保存文件的路径默认为当前路径
      * @param string $savePath
+     * @return $this;
      */
     public function setSavePath($savePath)
     {
         $this->savePath = $savePath;
+        return $this;
     }
 
 
